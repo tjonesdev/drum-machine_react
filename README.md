@@ -1,5 +1,5 @@
 # Drum Machine
-### Technologies: HTML, CSS, JavaScript, React.js
+### Created: Jun 26, 2020 || Status: Complete || Technologies: HTML, CSS, JavaScript, Babel, React.js
 
 **Description:** An application that plays a different sound for each button press. Refactored to React.js.
 
