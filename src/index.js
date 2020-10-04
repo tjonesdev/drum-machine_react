@@ -1,6 +1,6 @@
-import './index.css';
-import React from 'react';
-import ReactDOM from 'react-dom';
+import "./index.css";
+import React from "react";
+import ReactDOM from "react-dom";
 
 const drumKeys = [
   {
@@ -88,11 +88,11 @@ const drumKeys = [
 
 function Buttons(props) {
   return (
-    <button id={props.id} className="drum-pad" onClick={props.handleClick}>
+    <button id={props.id} className='drum-pad' onClick={props.handleClick}>
       {props.letter}
       <audio
         id={props.letter}
-        className="clip"
+        className='clip'
         src={!props.bankToggle ? props.src : props.srcAlt}
       />
     </button>
@@ -100,22 +100,22 @@ function Buttons(props) {
 }
 
 function Display(props) {
-  return <div className="display">{props.display}</div>;
+  return <div className='display'>{props.display}</div>;
 }
 
 function Bank(props) {
   return (
-    <div className="bank-container">
-      <label className="bank-label" for="sound-bank">
+    <div className='bank-container'>
+      <label className='bank-label' for='sound-bank'>
         Sound Bank
       </label>
-      <label className="bank">
+      <label className='bank'>
         <input
-          id="sound-bank"
-          type="checkbox"
+          id='sound-bank'
+          type='checkbox'
           onClick={props.handleBankToggle}
         />
-        <span className="bank-toggle"></span>
+        <span className='bank-toggle'></span>
       </label>
     </div>
   );
@@ -123,12 +123,12 @@ function Bank(props) {
 
 function Mute(props) {
   return (
-    <div className="mute-container">
-      <button className="mute" onClick={props.handleAudioToggle}>
+    <div className='mute-container'>
+      <button className='mute' onClick={props.handleAudioToggle}>
         {props.audioToggle ? (
-          <i class="fas fa-volume-up"></i>
+          <i class='fas fa-volume-up'></i>
         ) : (
-          <i class="fas fa-volume-mute"></i>
+          <i class='fas fa-volume-mute'></i>
         )}
       </button>
     </div>
@@ -154,7 +154,7 @@ class DrumMachine extends React.Component {
   handleClick(e) {
     e.preventDefault();
 
-    drumKeys.map((obj) => {
+    drumKeys.map(obj => {
       if (obj.id === e.target.id) {
         this.setState({
           display: !this.state.bankToggle ? obj.valueA : obj.valueB
@@ -169,7 +169,7 @@ class DrumMachine extends React.Component {
   handleKeyDown(e) {
     e.preventDefault();
 
-    drumKeys.map((obj) => {
+    drumKeys.map(obj => {
       if (e.keyCode === obj.key) {
         this.setState({
           display: !this.state.bankToggle ? obj.valueA : obj.valueB
@@ -203,9 +203,9 @@ class DrumMachine extends React.Component {
   handleKeyUp(e) {
     e.preventDefault();
 
-    drumKeys.map((obj) => {
+    drumKeys.map(obj => {
       if (e.keyCode === obj.key) {
-        document.getElementById(obj.id).classList.remove("active");
+        return document.getElementById(obj.id).classList.remove("active");
       }
     });
   }
@@ -223,7 +223,7 @@ class DrumMachine extends React.Component {
   }
 
   handleAudioToggle() {
-    this.setState({ audioToggle: !this.state.audioToggle });
+    this.setState({audioToggle: !this.state.audioToggle});
   }
 
   componentDidMount() {
@@ -243,10 +243,10 @@ class DrumMachine extends React.Component {
         return result;
       }, []);
 
-    const btns = splitEvery(drumKeys, 3).map((split) => {
+    const btns = splitEvery(drumKeys, 3).map(split => {
       return (
-        <div className="drum-row">
-          {split.map((i) => {
+        <div className='drum-row'>
+          {split.map(i => {
             return (
               <Buttons
                 id={i.id}
@@ -263,11 +263,11 @@ class DrumMachine extends React.Component {
     });
 
     return (
-      <div className="drum-machine">
-        <div className="drum-pad-container">{btns}</div>
-        <div className="display-container">
+      <div className='drum-machine'>
+        <div className='drum-pad-container'>{btns}</div>
+        <div className='display-container'>
           <Display display={this.state.display} />
-          <div className="controls-container">
+          <div className='controls-container'>
             <Bank
               handleBankToggle={this.handleBankToggle}
               bankToggle={this.state.bankToggle}
